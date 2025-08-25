@@ -10,20 +10,40 @@ interface IPerson
 
 class Student : IPerson
 {
-    public string StudentName { get; set; }
-    public int StudentID { get; set; }
-    public int Age { get; set; }
+    // Fields
+    protected string _studentName;
+    protected int _studentID;
+    protected int _age;
+
+    // Properties
+    public string StudentName
+    {
+        get { return _studentName; }
+        set { _studentName = value; }
+    }
+    
+    public int StudentID
+    {
+        get { return _studentID; }
+        set { _studentID = value; }
+    }
+    
+    public int Age
+    {
+        get { return _age; }
+        set { _age = value; }
+    }
 
     public Student(string studentName, int studentID, int age)
     {
-        StudentName = studentName;
-        StudentID = studentID;
-        Age = age;
+        _studentName = studentName;
+        _studentID = studentID;
+        _age = age;
     }
 
     public virtual void DisplayInformation()
     {
-        Console.WriteLine($"name: {StudentName}\nid: {StudentID}\nage: {Age}");
+        Console.WriteLine($"name: {_studentName}\nid: {_studentID}\nage: {_age}");
     }
 
     public Tuple<string, int, int> GetStudentInfo()
@@ -35,19 +55,33 @@ class Student : IPerson
 
 class CollegeStudent : Student
 {
-    public string Subject { get; set; }
-    public int Average { get; set; }
+    // Fields
+    private string _subject;
+    private int _average;
+
+    // Properties
+    public string Subject
+    {
+        get { return _subject; }
+        set { _subject = value; }
+    }
+    
+    public int Average
+    {
+        get { return _average; }
+        set { _average = value; }
+    }
 
     public CollegeStudent(string studentName, int studentID, int age, string subject, int average) : base(studentName, studentID, age)
     {
-        Subject = subject;
-        Average = average;
+        _subject = subject;
+        _average = average;
     }
 
     public override void DisplayInformation()
     {
         base.DisplayInformation();
-        Console.WriteLine($"subject: {Subject}\naverage: {Average}");
+        Console.WriteLine($"subject: {_subject}\naverage: {_average}");
     }
 }
 
